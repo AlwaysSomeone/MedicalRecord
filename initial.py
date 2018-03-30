@@ -1,7 +1,6 @@
 import numpy as np
 import os
 
-
 # embedding the position
 def pos_embed(x):
     if x < -60:
@@ -10,7 +9,6 @@ def pos_embed(x):
         return x + 61
     if x > 60:
         return 122
-
 
 # find the index of x in y, if x not in y, return -1
 def find_index(x, y):
@@ -22,28 +20,15 @@ def find_index(x, y):
             return i
     return flag
 
-
 # reading data
 def init():
     print('reading word embedding data...')
     vec = []
     word2id = {}
     f = open('./origin_data/vec.txt', encoding='utf-8')
-    # readline()每次读取一行,返回的是一个字符串对象，保存当前行的内容
     content = f.readline()
-    # strip()方法用于移除字符串头尾指定的字符(默认为空格)
-    # split()通过指定分隔符对字符串进行切片,当不带参数时以空格进行分割，返回列表
-    # print(content)
     content = content.strip().split()
-    # print(content)
-    # content2 = f.readline()
-    # content2 = content2.strip().split()
-    # print(content2)
-    # print(len(content2))
-    dim = int(content[1])
-    # print(content[0])
-    # print(int(content[0]))
-    # print(dim)
+    dim = int(content[1])#维数
     while True:
         content = f.readline()
         if content == '':
@@ -347,7 +332,7 @@ def getans():
     test_y = np.load('./data/testall_y.npy')
     eval_y = []
     for i in test_y:
-        eval_y.append(i[1:])
+        eval_y.append(i)
     allans = np.reshape(eval_y, (-1))
     np.save('./data/allans.npy', allans)
 
