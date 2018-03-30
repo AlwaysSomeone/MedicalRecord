@@ -85,9 +85,9 @@ def main(_):
                 acc = np.mean(accuracy)
                 summary_writer.add_summary(summary, step)
 
-                if step % 50 == 0:
-                    tempstr = "{}: step {}, softmax_loss {:g}, acc {:g}".format(time_str, step, loss, acc)
-                    print(tempstr)
+                #if step % 50 == 0:
+                tempstr = "{}: step {}, softmax_loss {:g}, acc {:g}".format(time_str, step, loss, acc)
+                print(tempstr)
 
             for one_epoch in range(settings.num_epochs):
 
